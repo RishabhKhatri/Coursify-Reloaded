@@ -1,0 +1,54 @@
+<div role="tabpanel">
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active">
+			<a href="#signin" aria-controls="signin" role="tab" data-toggle="tab">Sign in</a>
+		</li>
+		<li role="presentation">
+			<a href="#student" aria-controls="student" role="tab" data-toggle="tab">Sign up - Student</a>
+		</li>
+		<li role="presentation">
+			<a href="#teacher" aria-controls="teacher" role="tab" data-toggle="tab">Sign up - Teacher</a>
+		</li>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="signin">
+			<div class="row user-signin">
+				<div class="col-lg-6 col-md-offset-3">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h1>Sign in</h1>
+							<%= render "devise/sessions/new" %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="student">
+			<div class="row user-signin">
+				<div class="col-lg-6 col-md-offset-3">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h1>Sign up</h1>
+							<%= render "devise/registrations/new_student" %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="teacher">
+			<div class="row user-signin">
+				<div class="col-lg-6 col-md-offset-3">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h1>Sign up</h1>
+							<%= render "devise/registrations/new_teacher" %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
