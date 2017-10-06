@@ -23,6 +23,8 @@
   <% end %>
 
   <div class="actions col-sm-offset-2 col-sm-10">
-    <%= f.submit "Log in", class: 'btn btn-default' %> <span>or</span> <%= link_to 'Sign in with Facebook'.html_safe, user_facebook_omniauth_authorize_path, class: 'btn btn-default' %>
+    <%= f.submit "Log in", class: 'btn btn-default' %>
+    <%= link_to '<i class="fa fa-lg fa-facebook-official" aria-hidden="true"></i> Sign in with Facebook'.html_safe, user_facebook_omniauth_authorize_path, class: 'btn btn-default' %>
+    <%= link_to '<i class="fa fa-lg fa-google" aria-hidden="true"></i> Sign in with Google'.html_safe, user_google_oauth2_omniauth_authorize_path, class: 'btn btn-default' %>
   </div>
 <% end %>

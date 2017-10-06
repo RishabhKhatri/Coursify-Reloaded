@@ -1,9 +1,37 @@
-<div class="row user-signin">
-  <div class="col-lg-8 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= render "devise/registrations/edit" %>
-      </div>
-    </div>
-  </div>
+<div role="tabpanel">
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active">
+			<a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Edit</a>
+		</li>
+		<li role="presentation">
+			<a href="#cancel" aria-controls="cancel" role="tab" data-toggle="tab">Cancel</a>
+		</li>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="edit">
+			<div class="row user-signin">
+			  <div class="col-lg-8 col-md-offset-2">
+			    <div class="panel panel-default">
+			      <div class="panel-body">
+			        <%= render "devise/registrations/edit" %>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="cancel">
+			<div class="row user-signin">
+			  <div class="col-lg-8 col-md-offset-2">
+			    <div class="panel panel-default">
+			      <div class="panel-body">
+			        <%= render "devise/registrations/cancel" %>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
 </div>
