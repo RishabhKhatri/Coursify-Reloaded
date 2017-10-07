@@ -3,6 +3,7 @@ class TeacherController < ApplicationController
 	before_action :authenticate_user!
 
   def show
+    teacher = current_user
   end
 
   def index

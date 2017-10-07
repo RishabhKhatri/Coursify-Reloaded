@@ -11,6 +11,10 @@ class User < ApplicationRecord
 		User.find_by(email: email)
 	end
 
+  def to_liquid
+    return UserDrop.new(self)
+  end
+
 	protected
 
 		def picture_size
