@@ -3,15 +3,15 @@
 		<h1 style="font-weight: 100;">{{current_user.name}}</h1>
 		<div class="row">
 			<div class="col-sm-4">
-				<img src="{{current_user.picture}}">
+				<img src="{{@picture_url}}">
 			</div>
 			<div class="col-sm-8">
 				<h3>Email: {{current_user.email}}</h3>
 				<h3>Contact: {{current_user.contact}}</h3>
 				<h3>Expertise: {{current_user.expertise}}</h3>
-				<% if current_user.picture? %>
-					<%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i> Remove Profile Picture'.html_safe, teacher_remove_picture_path, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
-				<% end %>
+				{% if @picture_url %}
+					<a data-confirm="Are you sure?" class="btn btn-danger" rel="nofollow" data-method="delete" href="/teacher/remove_picture"><i class="fa fa-trash-o" aria-hidden="true"></i> Remove Profile Picture</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>

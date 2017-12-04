@@ -1,54 +1,29 @@
-<div role="tabpanel">
-	<!-- Nav tabs -->
-	<ul class="nav nav-tabs" role="tablist">
-		<li role="presentation" class="active">
-			<a href="#signin" aria-controls="signin" role="tab" data-toggle="tab">Sign in</a>
-		</li>
-		<li role="presentation">
-			<a href="#student" aria-controls="student" role="tab" data-toggle="tab">Sign up - Student</a>
-		</li>
-		<li role="presentation">
-			<a href="#teacher" aria-controls="teacher" role="tab" data-toggle="tab">Sign up - Teacher</a>
-		</li>
-	</ul>
-
-	<!-- Tab panes -->
-	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="signin">
-			<div class="row user-signin">
-				<div class="col-lg-6 col-md-offset-3">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h1>Sign in</h1>
-							<%= render "devise/sessions/new" %>
-						</div>
-					</div>
-				</div>
-			</div>
+<ul id="tabs-swipe-demo" class="tabs">
+	<li class="tab col s3"><a class="active" href="#test-swipe-1">Sign in</a></li>
+	<li class="tab col s3"><a href="#test-swipe-2">Sign up - Student</a></li>
+	<li class="tab col s3"><a href="#test-swipe-3">Sign up - Teacher</a></li>
+</ul>
+<div id="test-swipe-1">
+	<div class="container">
+		<div class="card-panel">
+			<h1>Sign in</h1>
+			<%= render "devise/sessions/new" %>
 		</div>
-		<div role="tabpanel" class="tab-pane" id="student">
-			<div class="row user-signin">
-				<div class="col-lg-6 col-md-offset-3">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h1>Sign up</h1>
-							<%= render "devise/registrations/new_student" %>
-						</div>
-					</div>
-				</div>
-			</div>
+	</div>
+</div>
+<div id="test-swipe-2">
+	<div class="container">
+		<div class="card-panel">
+			<h1>Sign up</h1>
+			<%= render "devise/registrations/new_student" %>
 		</div>
-		<div role="tabpanel" class="tab-pane" id="teacher">
-			<div class="row user-signin">
-				<div class="col-lg-6 col-md-offset-3">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h1>Sign up</h1>
-							<%= render "devise/registrations/new_teacher" %>
-						</div>
-					</div>
-				</div>
-			</div>
+	</div>
+</div>
+<div id="test-swipe-3">
+	<div class="container">
+		<div class="card-panel">
+			<h1>Sign up</h1>
+			<%= render "devise/registrations/new_teacher" %>
 		</div>
 	</div>
 </div>

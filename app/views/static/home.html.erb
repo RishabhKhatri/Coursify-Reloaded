@@ -1,8 +1,22 @@
-<div class="home-panel panel panel-default">
-	<div class="panel-body">
-		<h1>Welcome to Coursify!</h1>
-		<% if !user_signed_in? %>
-			<h3>Get started <%= link_to 'here'.html_safe, get_started_url %>.</h3>
-		<% end %>
-	</div>
+<div class="parallax-container">
+  <div class="parallax"><img src="/assets/p2.jpg"></div>
 </div>
+<div class="section white">
+  <div class="row container">
+    <h2 class="header">Welcome to Coursify!</h2>
+    <p class="grey-text text-darken-3 lighten-3">
+    	<% if !user_signed_in? %>
+				<h3>Get started <%= link_to 'here'.html_safe, get_started_url %>.</h3>
+			<% end %>
+    </p>
+  </div>
+</div>
+<div class="parallax-container">
+  <div class="parallax"><img src="/assets/p1.jpeg"></div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+      $('.parallax').parallax();
+    });
+</script>

@@ -1,6 +1,12 @@
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+@import 'materialize';
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
 body
 {
 	font-family: "Roboto";
+    background-color: #ddd;
 }
 
 .home-panel
@@ -8,12 +14,13 @@ body
     text-align: center;
 }
 
-.navbar
+.nav-wrapper
 {
 	border-radius: 0;
-	.navbar-brand
+	.brand-logo
 	{
 		font-family: "Satisfy";
+        margin-left: 20px;
 	}
 }
 
