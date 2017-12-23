@@ -26,3 +26,54 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#signin_form").validate({
+			debug: false,
+			errorElement: 'small',
+			errorClass: 'form-text text-muted error',
+			rules: {
+				"email": {email: true, required: true},
+				"passwd": {minlength: 6, required: true}
+			}
+		});
+		$("#teacher_form").validate({
+			debug: false,
+			errorElement: 'small',
+			errorClass: 'form-text text-muted error',
+			rules: {
+				"user[name]": {required: true, maxlength: 25},
+				"user[dob]": {date: true, required: true},
+				"user[contact]": {pattern: /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/, required: true},
+				"user[email]": {email: true, required: true},
+				"user[expertise]": {required: true},
+				"user[password]": {minlength: 6, required: true},
+				"user[password_confirmation]": {minlength: 6, required: true},
+			},
+			messages: {
+				"user[contact]": {
+					pattern: "Please enter a valid Indian phone number",
+				}
+			}
+		});
+		$("#student_form").validate({
+			debug: false,
+			errorElement: 'small',
+			errorClass: 'form-text text-muted error',
+			rules: {
+				"user[name]": {required: true, maxlength: 25},
+				"user[dob]": {date: true, required: true},
+				"user[contact]": {pattern: /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/, required: true},
+				"user[email]": {email: true, required: true},
+				"user[password]": {minlength: 6, required: true},
+				"user[password_confirmation]": {minlength: 6, required: true},
+			},
+			messages: {
+				"user[contact]": {
+					pattern: "Please enter a valid Indian phone number",
+				}
+			}
+		});
+	});
+</script>

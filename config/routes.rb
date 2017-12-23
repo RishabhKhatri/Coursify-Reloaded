@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   delete 'teacher/remove_picture', to: 'teacher#remove_picture'
 
-  devise_for :users, controllers: { confirmations: 'confirmations', omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { confirmations: 'confirmations', omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
   get 'static/home'
 
   get 'static/about'
