@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card text-center" style="width: 20rem;">
+      <% if current_user.picture %>
+        <%= image_tag current_user.picture, class: 'card-img-top', alt: 'Profile Picture' %>
+      <% end %>
+      <div class="card-body">
+        <h4 class="card-title"><%= current_user.name %></h4>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Email: <%= current_user.email %></li>
+        <li class="list-group-item">Contact: <%= current_user.contact %></li>
+        <li class="list-group-item">Expertise: <%= current_user.expertise %></li>
+      </ul>
+      <div class="card-body">
+        <%= link_to 'Settings'.html_safe, edit_user_registration_path, class: 'card-link' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <div class="card">
+      <div class="card-header">
+        <h2>About <%= current_user.name %></h2>
+      </div>
+      <div class="card-body">
+        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat cupiditate eum dicta dolorem vero modi id, quae vitae blanditiis veritatis quod aperiam ea repudiandae omnis officiis nostrum quis aliquam facilis!</h2>
+      </div>
+    </div>
+  </div>
+</div>

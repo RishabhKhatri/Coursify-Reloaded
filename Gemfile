@@ -49,8 +49,6 @@ gem 'fog'
 
 gem 'liquid'
 
-gem 'materialize-sass'
-
 gem 'jquery-rails'
 
 gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'

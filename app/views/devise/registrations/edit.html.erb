@@ -1,37 +1,22 @@
-<div role="tabpanel">
-	<!-- Nav tabs -->
-	<ul class="nav nav-tabs" role="tablist">
-		<li role="presentation" class="active">
-			<a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Edit</a>
-		</li>
-		<li role="presentation">
-			<a href="#cancel" aria-controls="cancel" role="tab" data-toggle="tab">Cancel</a>
-		</li>
-	</ul>
-
-	<!-- Tab panes -->
-	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="edit">
-			<div class="row user-signin">
-			  <div class="col-lg-8 col-md-offset-2">
-			    <div class="panel panel-default">
-			      <div class="panel-body">
-			        <%= render "devise/registrations/edit" %>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-		</div>
-		<div role="tabpanel" class="tab-pane" id="cancel">
-			<div class="row user-signin">
-			  <div class="col-lg-8 col-md-offset-2">
-			    <div class="panel panel-default">
-			      <div class="panel-body">
-			        <%= render "devise/registrations/cancel" %>
-			      </div>
-			    </div>
-			  </div>
-			</div>
+<div class="card">
+	<div class="card-header">
+		<ul class="nav nav-pills nav-fill nav-justified" id="pills-tab" role="tablist">
+		  <li class="nav-item">
+		    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Edit</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Delete Account</a>
+		  </li>
+		</ul>
+	</div>
+	<div class="card-body">
+		<div class="tab-content" id="pills-tabContent">
+		  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+		  	<%= render "devise/registrations/edit" %>
+		  </div>
+		  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+				<%= render "devise/registrations/cancel" %>
+		  </div>
 		</div>
 	</div>
 </div>

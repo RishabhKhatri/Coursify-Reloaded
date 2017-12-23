@@ -1,82 +1,104 @@
-<h2 style="text-align: center;">Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row">
+  <div class="offset-sm-1 col-sm-10 offset-sm-1">
+    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="form-row">
+        <div class="form-group col-sm-4">
+          <div class="input-group mb-2 mb-sm-0">
+            <div class="input-group-addon">Name</div>
+            <%= f.text_field :name, class: 'form-control', placeholder: "Name" %>          
+          </div>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :name, class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Name" %>
-    </div>
-  </div>
+        <div class="form-group col-sm-4">
+          <div class="input-group mb-2 mb-sm-0">
+            <div class="input-group-addon">Email</div>
+            <%= f.email_field :email, readonly: true, class: 'form-control', placeholder: "E-mail" %>
+          </div>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :email, class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "E-mail" %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :contact, class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.text_field :contact, class: 'form-control', placeholder: "Contact" %>
-    </div>
-  </div>
-
-  <% if resource.account_type == "teacher" %>
-    <div class="form-group">
-      <%= f.label :expertise, class: 'control-label col-sm-2' %>
-      <div class="col-sm-10">
-        <%= f.text_field :expertise, class: 'form-control', placeholder: "Expertise" %>
+        <div class="form-group col-sm-4">
+          <div class="input-group mb-2 mb-sm-0">
+            <div class="input-group-addon">D.O.B</div>
+            <%= f.date_field :dob, readonly: true, class: 'form-control', id: 'teacher-dob', placeholder: "D.O.B" %>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <% if resource.account_type == "teacher" %>
+        <div class="form-row">
+          <div class="form-group col-sm-6">
+            <div class="input-group mb-2 mb-sm-0">
+              <div class="input-group-addon">Contact</div>
+              <%= f.text_field :contact, class: 'form-control', id: 'teacher-contact', placeholder: "Contact" %>
+            </div>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :password, class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Password (Leave blank if you don't want to change it)" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
+          <div class="form-group col-sm-6">
+            <div class="input-group mb-2 mb-sm-0">
+              <div class="input-group-addon">Expertise</div>
+              <%= f.text_field :expertise, class: 'form-control', id: 'teacher-expertise', placeholder: "Expertise" %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="form-group">
+          <div class="input-group mb-2 mb-sm-0">
+              <div class="input-group-addon">Expertise</div>
+              <%= f.text_field :contact, class: 'form-control', id: 'teacher-contact', placeholder: "Contact" %>
+            </div>
+        </div>
       <% end %>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :password_confirmation, "Password Confirmation", class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: "Confirm Password" %>      
-    </div>
-  </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
 
-  <div class="form-group">
-    <%= f.label :current_password, "Current Password", class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.password_field :current_password, autocomplete: "off", class: 'form-control', placeholder: "Current Password" %>    
-    </div>
-  </div>
+      <div class="form-row">
+        <div class="form-group col-sm-6">
+          <div class="input-group mb-2 mb-sm-0">
+            <div class="input-group-addon">New Password</div>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "New Password (Optional)" %>
+          </div>
+          <% if @minimum_password_length %>
+            <small id="passwordHelpBlock" class="form-text text-muted">
+              <%= @minimum_password_length %> characters minimum
+            </small>
+          <% end %>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :picture, "Profile Picture", class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <span class="picture">
-        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'btn btn-default' %>
-      </span>
-    </div>
-  </div>
+        <div class="form-group col-sm-6">
+          <div class="input-group mb-2 mb-sm-0">
+            <div class="input-group-addon">New Password Confirmation</div>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: "Confirm New Password" %>      
+          </div>
+        </div>
+      </div>
 
-  <div class="actions">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "Update", class: 'btn btn-default' %>
-    </div>
+      <div class="form-row">
+        <div class="form-group col-sm-6">
+          <div class="input-group mb-2 mb-sm-0">
+            <div class="input-group-addon">Current Password</div>
+            <%= f.password_field :current_password, autocomplete: "off", class: 'form-control', placeholder: "Current Password" %>    
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group mb-2 mb-sm-0">
+            <div class="input-group-addon">Profile Picture</div>
+            <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group actions">
+        <%= f.submit "Update", class: 'btn btn-primary btn-block' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 
 <script type="text/javascript">
   $('#micropost_picture').bind('change', function() {

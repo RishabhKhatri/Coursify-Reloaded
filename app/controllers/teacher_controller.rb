@@ -3,7 +3,6 @@ class TeacherController < ApplicationController
 	before_action :authenticate_user!
 
   def show
-    @picture_url = current_user.picture.url
   end
 
   def index

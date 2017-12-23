@@ -1,29 +1,28 @@
-<ul id="tabs-swipe-demo" class="tabs">
-	<li class="tab col s3"><a class="active" href="#test-swipe-1">Sign in</a></li>
-	<li class="tab col s3"><a href="#test-swipe-2">Sign up - Student</a></li>
-	<li class="tab col s3"><a href="#test-swipe-3">Sign up - Teacher</a></li>
-</ul>
-<div id="test-swipe-1">
-	<div class="container">
-		<div class="card-panel">
-			<h1>Sign in</h1>
-			<%= render "devise/sessions/new" %>
-		</div>
+<div class="card">
+	<div class="card-header">
+		<ul class="nav nav-pills nav-fill nav-justified" id="pills-tab" role="tablist">
+		  <li class="nav-item">
+		    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Sign In</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Student Sign Up</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Teacher Sign Up</a>
+		  </li>
+		</ul>
 	</div>
-</div>
-<div id="test-swipe-2">
-	<div class="container">
-		<div class="card-panel">
-			<h1>Sign up</h1>
-			<%= render "devise/registrations/new_student" %>
-		</div>
-	</div>
-</div>
-<div id="test-swipe-3">
-	<div class="container">
-		<div class="card-panel">
-			<h1>Sign up</h1>
-			<%= render "devise/registrations/new_teacher" %>
+	<div class="card-body">
+		<div class="tab-content" id="pills-tabContent">
+		  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+		  	<%= render "devise/sessions/new" %>
+		  </div>
+		  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+				<%= render "devise/registrations/new_student" %>
+		  </div>
+		  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+				<%= render "devise/registrations/new_teacher" %>
+		  </div>
 		</div>
 	</div>
 </div>

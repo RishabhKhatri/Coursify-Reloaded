@@ -1,63 +1,57 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
-  <%= devise_error_messages! %>
+<div class="row">
+  <div class="offset-sm-1 col-sm-10 offset-sm-1">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-  <div class="form-group">
-    <%= f.label :name, class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Name" %>
-    </div>
-  </div>
+      <div class="form-row">
+        <div class="form-group col-sm-6">
+          <%= f.label :name, class: 'col-form-label', for: 'teacher-name' %>
+          <%= f.text_field :name, autofocus: true, class: 'form-control', id: 'teacher-name', placeholder: "Name" %>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :email, class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.email_field :email, class: 'form-control', placeholder: "E-mail" %>
-    </div>
-  </div>
+        <div class="form-group col-sm-6">
+          <%= f.label :email, class: 'col-form-label', for: 'teacher-email' %>
+          <%= f.email_field :email, class: 'form-control', id: 'teacher-email', placeholder: "E-mail" %>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group col-sm-6">
+          <%= f.label :dob, "D.O.B", class: 'col-form-label', for: 'teacher-dob' %>
+          <%= f.date_field :dob, class: 'form-control', id: 'teacher-dob', placeholder: "Contact" %>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :dob, "D.O.B", class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.date_field :dob, class: 'form-control', placeholder: "Contact" %>
-    </div>
-  </div>
+        <div class="form-group col-sm-6">
+          <%= f.label :contact, class: 'col-form-label', for: 'teacher-contact' %>
+          <%= f.text_field :contact, class: 'form-control', id: 'teacher-contact', placeholder: "Contact" %>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <%= f.label :contact, class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.text_field :contact, class: 'form-control', placeholder: "Contact" %>
-    </div>
-  </div>
+      <div class="form-group">
+        <%= f.label :expertise, class: 'col-form-label', for: 'teacher-expertise' %>
+        <%= f.text_field :expertise, class: 'form-control', id: 'teacher-expertise', placeholder: "Expertise" %>
+      </div>
 
-  <div class="form-group">
-    <%= f.label :expertise, class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.text_field :expertise, class: 'form-control', placeholder: "Expertise" %>
-    </div>
-  </div>
+      <%= f.hidden_field :account_type, :value => "teacher" %>
 
-  <%= f.hidden_field :account_type, :value => "teacher" %>
+      <div class="form-row">
+        <div class="form-group col-sm-6">
+          <%= f.label :password, class: 'col-form-label', for: 'teacher-passwd' %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control', id: 'teacher-passwd', placeholder: "Password" %>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :password, class: 'control-label col-sm-2' %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <div class="form-group col-sm-6">
+          <%= f.label :"Confirmation", class: 'col-form-label', for: 'teacher-confirm' %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', id: 'teacher-confirm', placeholder: "Confirm Password" %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: 'btn btn-primary' %>
+      </div>
     <% end %>
-    <div class="col-sm-10">
-      <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Password" %>
-    </div>
   </div>
-
-  <div class="form-group">
-    <%= f.label :"Confirmation", class: 'control-label col-sm-2' %>
-    <div class="col-sm-10">
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: "Confirm Password" %>
-    </div>
-  </div>
-
-  <div class="actions">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "Sign up", class: 'btn btn-default' %>
-    </div>
-  </div>
-<% end %>
+</div>
