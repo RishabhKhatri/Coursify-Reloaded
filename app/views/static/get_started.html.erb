@@ -5,10 +5,7 @@
 		    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Sign In</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Student Sign Up</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Teacher Sign Up</a>
+		    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Sign Up</a>
 		  </li>
 		</ul>
 	</div>
@@ -18,10 +15,7 @@
 		  	<%= render "devise/sessions/new" %>
 		  </div>
 		  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-				<%= render "devise/registrations/new_student" %>
-		  </div>
-		  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-				<%= render "devise/registrations/new_teacher" %>
+				<%= render "devise/registrations/new" %>
 		  </div>
 		</div>
 	</div>
@@ -38,7 +32,7 @@
 				"passwd": {minlength: 6, required: true}
 			}
 		});
-		$("#teacher_form").validate({
+		$("#register_form").validate({
 			debug: false,
 			errorElement: 'small',
 			errorClass: 'form-text text-muted error',
@@ -48,24 +42,6 @@
 				"user[contact]": {pattern: /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/, required: true},
 				"user[email]": {email: true, required: true},
 				"user[expertise]": {required: true},
-				"user[password]": {minlength: 6, required: true},
-				"user[password_confirmation]": {minlength: 6, required: true},
-			},
-			messages: {
-				"user[contact]": {
-					pattern: "Please enter a valid Indian phone number",
-				}
-			}
-		});
-		$("#student_form").validate({
-			debug: false,
-			errorElement: 'small',
-			errorClass: 'form-text text-muted error',
-			rules: {
-				"user[name]": {required: true, maxlength: 25},
-				"user[dob]": {date: true, required: true},
-				"user[contact]": {pattern: /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/, required: true},
-				"user[email]": {email: true, required: true},
 				"user[password]": {minlength: 6, required: true},
 				"user[password_confirmation]": {minlength: 6, required: true},
 			},

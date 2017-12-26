@@ -1,54 +1,42 @@
 <div class="row">
   <div class="offset-sm-1 col-sm-10 offset-sm-1">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: users_put_path, html: { method: :put, id: 'edit_form' }) do |f| %>
       <%= devise_error_messages! %>
 
       <div class="form-row">
         <div class="form-group col-sm-4">
-          <div class="input-group mb-2 mb-sm-0">
-            <div class="input-group-addon">Name</div>
-            <%= f.text_field :name, class: 'form-control', placeholder: "Name" %>          
-          </div>
+          <%= f.label :name, class: 'col-form-label', for: 'name' %>
+          <%= f.text_field :name, autofocus: true, class: 'form-control', id: 'name', placeholder: "Name" %>
         </div>
 
         <div class="form-group col-sm-4">
-          <div class="input-group mb-2 mb-sm-0">
-            <div class="input-group-addon">Email</div>
-            <%= f.email_field :email, readonly: true, class: 'form-control', placeholder: "E-mail" %>
-          </div>
+          <%= f.label :email, class: 'col-form-label', for: 'email' %>
+          <%= f.email_field :email, readonly: true, class: 'form-control', id: 'email', placeholder: "E-mail" %>
         </div>
 
         <div class="form-group col-sm-4">
-          <div class="input-group mb-2 mb-sm-0">
-            <div class="input-group-addon">D.O.B</div>
-            <%= f.date_field :dob, readonly: true, class: 'form-control', id: 'teacher-dob', placeholder: "D.O.B" %>
-          </div>
+          <%= f.label :dob, "D.O.B", class: 'col-form-label', for: 'dob' %>
+          <%= f.date_field :dob, readonly: true, class: 'form-control', id: 'dob', placeholder: "Contact" %>
         </div>
       </div>
 
-      <% if resource.account_type == "teacher" %>
+      <% if resource.has_role? :teacher %>
         <div class="form-row">
           <div class="form-group col-sm-6">
-            <div class="input-group mb-2 mb-sm-0">
-              <div class="input-group-addon">Contact</div>
-              <%= f.text_field :contact, class: 'form-control', id: 'teacher-contact', placeholder: "Contact" %>
-            </div>
+            <%= f.label :contact, class: 'col-form-label', for: 'contact' %>
+            <%= f.text_field :contact, class: 'form-control', id: 'contact', placeholder: "Contact" %>
           </div>
 
           <div class="form-group col-sm-6">
-            <div class="input-group mb-2 mb-sm-0">
-              <div class="input-group-addon">Expertise</div>
-              <%= f.text_field :expertise, class: 'form-control', id: 'teacher-expertise', placeholder: "Expertise" %>
-            </div>
+            <%= f.label :expertise, class: 'col-form-label', for: 'expertise' %>
+            <%= f.text_field :expertise, class: 'form-control', id: 'expertise', placeholder: "Expertise" %>
           </div>
         </div>
       <% else %>
         <div class="form-group">
-          <div class="input-group mb-2 mb-sm-0">
-              <div class="input-group-addon">Expertise</div>
-              <%= f.text_field :contact, class: 'form-control', id: 'teacher-contact', placeholder: "Contact" %>
-            </div>
+          <%= f.label :contact, class: 'col-form-label', for: 'contact' %>
+          <%= f.text_field :contact, class: 'form-control', id: 'contact', placeholder: "Contact" %>
         </div>
       <% end %>
 
@@ -58,10 +46,8 @@
 
       <div class="form-row">
         <div class="form-group col-sm-6">
-          <div class="input-group mb-2 mb-sm-0">
-            <div class="input-group-addon">New Password</div>
-            <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "New Password (Optional)" %>
-          </div>
+          <%= f.label :password, "New Password", class: 'col-form-label', for: 'passwd' %>
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control', id: 'passwd', placeholder: "New Password (Optional)" %>
           <% if @minimum_password_length %>
             <small id="passwordHelpBlock" class="form-text text-muted">
               <%= @minimum_password_length %> characters minimum
@@ -70,26 +56,20 @@
         </div>
 
         <div class="form-group col-sm-6">
-          <div class="input-group mb-2 mb-sm-0">
-            <div class="input-group-addon">New Password Confirmation</div>
-            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: "Confirm New Password" %>      
-          </div>
+          <%= f.label :"Confirmation", "New Password Confirmation", class: 'col-form-label', for: 'confirm' %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', id: 'confirm', placeholder: "Confirm New Password" %>
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group col-sm-6">
-          <div class="input-group mb-2 mb-sm-0">
-            <div class="input-group-addon">Current Password</div>
-            <%= f.password_field :current_password, autocomplete: "off", class: 'form-control', placeholder: "Current Password" %>    
-          </div>
+          <%= f.label :current_password, "Current Password*", class: 'col-form-label', for: 'current' %>
+          <%= f.password_field :current_password, autocomplete: "off", id: 'current', class: 'form-control', placeholder: "Current Password" %>  
         </div>
 
         <div class="form-group">
-          <div class="input-group mb-2 mb-sm-0">
-            <div class="input-group-addon">Profile Picture</div>
-            <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'form-control' %>
-          </div>
+          <%= f.label :picture, "Profile Picture", class: 'col-form-label', for: 'picture' %>
+          <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', id: 'picture', class: 'form-control' %>
         </div>
       </div>
 
@@ -106,5 +86,25 @@
     if (size_in_megabytes > 5) {
       alert('Maximum file size is 5MB. Please choose a smaller file.');
     }
+  });
+  $(document).ready(function() {
+    $("#edit_form").validate({
+      debug: false,
+      errorElement: 'small',
+      errorClass: 'form-text text-muted error',
+      rules: {
+        "user[name]": {required: true, maxlength: 25},
+        "user[dob]": {date: true, required: true},
+        "user[contact]": {pattern: /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/, required: true},
+        "user[email]": {email: true, required: true},
+        "user[expertise]": {required: true},
+        "user[current_password]": {minlength: 6, required: true},
+      },
+      messages: {
+        "user[contact]": {
+          pattern: "Please enter a valid Indian phone number",
+        }
+      }
+    });
   });
 </script>

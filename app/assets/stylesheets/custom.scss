@@ -6,6 +6,10 @@ body
   background-color: #ddd;
 }
 
+.links_list {
+	list-style-type: none;
+}
+
 .error {
 	color: red !important;
 }
@@ -25,9 +29,4 @@ body
 		text-align: center;
 		font-weight: 100;
 	}
-}
-
-.links_list
-{
-	list-style-type: none;
 }

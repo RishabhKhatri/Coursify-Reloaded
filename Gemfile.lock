@@ -337,6 +337,8 @@ GEM
     public_suffix (3.0.1)
     puma (3.11.0)
     puma (3.11.0-java)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.3)
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
@@ -398,6 +400,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rolify (5.2.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.4)
@@ -491,7 +494,9 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   puma (~> 3.7)
+  pundit
   rails (~> 5.1.4)
+  rolify
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

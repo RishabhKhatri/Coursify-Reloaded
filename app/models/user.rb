@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  rolify
+  after_create :assign_default_role
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, 
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
@@ -13,6 +15,10 @@ class User < ApplicationRecord
 
   def to_liquid
     return UserDrop.new(self)
+  end
+
+  def assign_default_role
+    self.add_role(:student) if self.roles.blank?
   end
 
 	protected

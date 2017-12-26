@@ -6,10 +6,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-      	<%= link_to 'Home'.html_safe, root_url, class: 'nav-link' %>
+      	<%= link_to 'Home'.html_safe, root_url(subdomain: ''), class: 'nav-link' %>
       </li>
       <li class="nav-item">
-      	<%= link_to 'About'.html_safe, static_about_url, class: 'nav-link' %>
+      	<%= link_to 'About'.html_safe, about_url(subdomain: ''), class: 'nav-link' %>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
@@ -19,14 +19,14 @@
             <%= current_user.name %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <%= link_to 'Profile'.html_safe, teacher_show_url, class: 'dropdown-item' %>
-            <%= link_to 'Settings'.html_safe, edit_user_registration_path, class: 'dropdown-item' %>
+            <%= link_to 'Profile'.html_safe, profile_url(subdomain: 'dashboard'), class: 'dropdown-item' %>
+            <%= link_to 'Settings'.html_safe, users_edit_url(subdomain: 'dashboard'), class: 'dropdown-item' %>
             <%= link_to 'Sign out'.html_safe, destroy_user_session_url, method: :delete, class: 'dropdown-item' %>
           </div>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to 'Get Started'.html_safe, get_started_url, class: 'nav-link' %>
+          <%= link_to 'Get Started'.html_safe, get_started_url(subdomain: ''), class: 'nav-link' %>
         </li>
       <% end %>
     </ul>

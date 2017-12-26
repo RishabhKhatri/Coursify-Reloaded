@@ -30,7 +30,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :ses
   config.action_mailer.perform_deliveries = true
-  host = 'localhost:3000'
+  host = 'lvh.me:3000'
   config.action_mailer.default_url_options = { host: host }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
