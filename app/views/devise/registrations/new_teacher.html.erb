@@ -1,0 +1,96 @@
+<div class="card">
+  <div class="card-header">
+    <h3><center>Sign Up - Teacher</center></h3>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="offset-sm-1 col-sm-10 offset-sm-1">
+        <%= form_for(resource, as: resource_name, url: get_started_teacher_path, html: { id: 'register_form' }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <%= f.label :name, class: 'col-form-label', for: 'name' %>
+              <%= f.text_field :name, autofocus: true, class: 'form-control', id: 'name', placeholder: "Name" %>
+            </div>
+
+            <div class="form-group col-sm-6">
+              <%= f.label :email, class: 'col-form-label', for: 'email' %>
+              <%= f.email_field :email, class: 'form-control', id: 'email', placeholder: "E-mail" %>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <%= f.label :dob, "D.O.B", class: 'col-form-label', for: 'dob' %>
+              <%= f.date_field :dob, class: 'form-control', id: 'dob', placeholder: "Contact" %>
+            </div>
+
+            <div class="form-group col-sm-6">
+              <%= f.label :contact, class: 'col-form-label', for: 'contact' %>
+              <%= f.text_field :contact, class: 'form-control', id: 'contact', placeholder: "Contact" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :expertise, class: 'col-form-label', for: 'expertise' %>
+            <%= f.text_field :expertise, class: 'form-control', id: 'expertise', placeholder: "Expertise" %>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <%= f.label :password, class: 'col-form-label', for: 'passwd' %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "off", class: 'form-control', id: 'passwd', placeholder: "Password" %>
+            </div>
+
+            <div class="form-group col-sm-6">
+              <%= f.label :"Confirmation", class: 'col-form-label', for: 'confirm' %>
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', id: 'confirm', placeholder: "Confirm Password" %>
+            </div>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Sign up", class: 'btn btn-primary' %>
+            Already have and account? <%= link_to 'Log in', get_started_url %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#signin_form").validate({
+      debug: false,
+      errorElement: 'small',
+      errorClass: 'form-text text-muted error',
+      rules: {
+        "email": {email: true, required: true},
+        "passwd": {minlength: 6, required: true}
+      }
+    });
+    $("#register_form").validate({
+      debug: false,
+      errorElement: 'small',
+      errorClass: 'form-text text-muted error',
+      rules: {
+        "user[name]": {required: true, maxlength: 25},
+        "user[dob]": {date: true, required: true},
+        "user[contact]": {pattern: /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/, required: true},
+        "user[email]": {email: true, required: true},
+        "user[expertise]": {required: true},
+        "user[password]": {minlength: 6, required: true},
+        "user[password_confirmation]": {minlength: 6, required: true},
+      },
+      messages: {
+        "user[contact]": {
+          pattern: "Please enter a valid Indian phone number",
+        }
+      }
+    });
+  });
+</script>

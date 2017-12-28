@@ -25,7 +25,11 @@
         <h2>About <%= current_user.name %></h2>
       </div>
       <div class="card-body">
-        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat cupiditate eum dicta dolorem vero modi id, quae vitae blanditiis veritatis quod aperiam ea repudiandae omnis officiis nostrum quis aliquam facilis!</h2>
+        <% if current_user.has_role? :teacher %>
+          <h2>Role: Teacher</h2>
+        <% elsif current_user.has_role? :student %>
+          <h2>Role: Teacher</h2>
+        <% end %>
       </div>
     </div>
   </div>

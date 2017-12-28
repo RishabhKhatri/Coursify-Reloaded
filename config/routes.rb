@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     patch '/users/edit', to: 'registrations#update', as: 'users_patch', constraints: { subdomain: 'dashboard' }
     put '/users/edit', to: 'registrations#update', as: 'users_put', constraints: { subdomain: 'dashboard' }
     delete '/users', to: 'registrations#destroy', constraints: { subdomain: 'dashboard' }
+    post '/get_started/teacher', to: 'registrations#create_teacher'
+    get '/get_started/teacher', to: 'registrations#new_teacher'
   end
   
   root 'static#home'
