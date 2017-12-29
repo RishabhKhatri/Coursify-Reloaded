@@ -53,9 +53,11 @@ gem 'jquery-rails'
 
 gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
 
-gem "pundit"
+gem 'pundit'
 
-gem "rolify"
+gem 'rolify'
+
+gem 'ckeditor'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

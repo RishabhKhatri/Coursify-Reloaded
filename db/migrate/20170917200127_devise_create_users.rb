@@ -6,8 +6,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :contact,            unique: true
       t.string :expertise
       t.string :picture
-      t.boolean :admin,             default: false
-      t.string :imglink
       t.date :dob
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

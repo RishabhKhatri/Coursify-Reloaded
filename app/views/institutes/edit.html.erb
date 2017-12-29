@@ -1,0 +1,98 @@
+<div class="card">
+  <div class="card-header">
+    <h3><center>Update Institute Profile</center></h3>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="offset-sm-1 col-sm-10 offset-sm-1">
+        <%= form_for(institute, as: institute_name, url: update_institute_path, html: { method: :put, id: 'edit_form' }) do |f| %>
+          <%= render 'error_messages', class: 'form-control' %>
+
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <%= f.label :name, class: 'col-form-label', for: 'name' %>
+              <%= f.text_field :name, autofocus: true, class: 'form-control', id: 'name', placeholder: "Name" %>
+            </div>
+
+            <div class="form-group col-sm-6">
+              <%= f.label :email, class: 'col-form-label', for: 'email' %>
+              <%= f.email_field :email, class: 'form-control', id: 'email', placeholder: "E-mail" %>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= f.label :slug, class: 'col-form-label', for: 'slug' %>
+              <%= f.text_field :slug, class: 'form-control', id: 'slug', placeholder: "Slug" %>
+            </div>
+
+            <div class="form-group col-sm-4">
+              <%= f.label :contact, class: 'col-form-label', for: 'contact' %>
+              <%= f.text_field :contact, class: 'form-control', id: 'contact', placeholder: "Contact" %>
+            </div>
+
+            <div class="form-group col-sm-4">
+              <%= f.label :website, class: 'col-form-label', for: 'website' %>
+              <%= f.text_field :website, class: 'form-control', id: 'website', placeholder: "Website" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :about, class: 'col-form-label', for: 'about' %>
+            <%= f.cktext_area :about, class: 'form-control', id: 'about', placeholder: "About the Institute" %>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <%= f.label :profile, "Institute Logo", class: 'col-form-label', for: 'profile' %>
+              <%= f.file_field :profile, accept: 'image/jpeg,image/gif,image/png', autofocus: true, class: 'form-control', id: 'profile' %>
+            </div>
+
+            <div class="form-group col-sm-6">
+              <%= f.label :background, "Background Profile Image", class: 'col-form-label', for: 'background' %>
+              <%= f.file_field :background, accept: 'image/jpeg,image/gif,image/png', autofocus: true, class: 'form-control', id: 'background' %>
+            </div>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Update", class: 'btn btn-primary btn-block' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#profile').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+  $('#background').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+  $(document).ready(function() {
+    $("#edit_form").validate({
+      debug: false,
+      errorElement: 'small',
+      errorClass: 'form-text text-muted error',
+      rules: {
+        "institute[name]": {required: true, maxlength: 100},
+        "institute[contact]": {pattern: /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/, required: true},
+        "institute[email]": {email: true, required: true},
+        "institute[slug]": {required: true, rangelength: [3,6]},
+        "institute[website]": {required: true, url: true},
+      },
+      messages: {
+        "institute[contact]": {
+          pattern: "Please enter a valid Indian phone number",
+        }
+      }
+    });
+  });
+</script>

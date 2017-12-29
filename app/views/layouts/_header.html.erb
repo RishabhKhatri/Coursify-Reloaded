@@ -11,6 +11,11 @@
       <li class="nav-item">
       	<%= link_to 'About'.html_safe, about_url(subdomain: ''), class: 'nav-link' %>
       </li>
+      <% if user_signed_in? and current_user.has_role?(:teacher)%>
+        <li class="nav-item">
+          <%= link_to 'Manage Institutes'.html_safe, manage_institutes_url(subdomain: ''), class: 'nav-link' %>
+        </li>
+      <% end %>
     </ul>
     <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>

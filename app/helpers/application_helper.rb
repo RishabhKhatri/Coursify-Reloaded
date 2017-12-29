@@ -1,4 +1,12 @@
 module ApplicationHelper
+	def institute
+		@institute ||= Institute.new
+	end
+
+	def institute_name
+		:institute
+	end
+	
 	def resource_name
 		:user
 	end

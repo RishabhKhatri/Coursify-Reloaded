@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card text-center" style="width: 20rem;">
+      <% if @institute.profile %>
+        <%= image_tag @institute.profile, class: 'card-img-top', alt: 'Profile Picture' %>
+      <% end %>
+      <div class="card-body">
+        <h4 class="card-title"><%= @institute.name %></h4>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Email: <%= @institute.email %></li>
+        <li class="list-group-item">Contact: <%= @institute.contact %></li>
+        <li class="list-group-item">Website: <%= link_to "#{@institute.website}", @institute.website, target: "_blank" %></li>
+      </ul>
+      <div class="card-body">
+        <%= link_to 'Edit Institute Profile'.html_safe, edit_institute_url(subdomain: @institute.slug), class: 'card-link' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <div class="card">
+      <div class="card-header">
+        <h2>About <%= @institute.name %></h2>
+      </div>
+      <div class="card-body">
+        <%= sanitize @institute.about.html_safe %>
+      </div>
+    </div>
+  </div>
+</div>

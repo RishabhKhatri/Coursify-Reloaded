@@ -81,7 +81,7 @@
 </div>
 
 <script type="text/javascript">
-  $('#micropost_picture').bind('change', function() {
+  $('#picture').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
     if (size_in_megabytes > 5) {
       alert('Maximum file size is 5MB. Please choose a smaller file.');
@@ -93,7 +93,7 @@
       errorElement: 'small',
       errorClass: 'form-text text-muted error',
       rules: {
-        "user[name]": {required: true, maxlength: 25},
+        "user[name]": {required: true, maxlength: 50},
         "user[dob]": {date: true, required: true},
         "user[contact]": {pattern: /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/, required: true},
         "user[email]": {email: true, required: true},

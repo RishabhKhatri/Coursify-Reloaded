@@ -1,6 +1,6 @@
 class CustomFailure < Devise::FailureApp
   def redirect_url
-    get_started_url
+    get_started_url(subdomain: '')
   end
 
   # You need to override respond to eliminate recall
@@ -9,7 +9,7 @@ class CustomFailure < Devise::FailureApp
       http_auth
     else
       store_location!
-      flash[:danger] = "Invalid Email or Password" unless flash[:notice]
+      flash[:danger] = "Please login with a valid Email and Password" unless flash[:notice]
       redirect_to redirect_url
     end
   end

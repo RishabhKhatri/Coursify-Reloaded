@@ -1,0 +1,36 @@
+<div class="card">
+	<div class="card-header">
+		<h1><center>Manage Institute Profiles</center></h1>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-sm-4">
+				<h2><center>Super Admin</center></h2>
+				<div class="list-group">
+					<% @super_admins.each do |i| %>
+						<%= link_to i.name, root_url(subdomain: i.slug), class: 'list-group-item list-group-item-action list-group-item-primary' %>
+					<% end %>
+				  </a>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<h2><center>Admin</center></h2>
+				<div class="list-group">
+					<% @admins.each do |i| %>
+						<%= link_to i.name, root_url(subdomain: i.slug), class: 'list-group-item list-group-item-action list-group-item-primary' %>
+					<% end %>
+				  </a>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<h2><center>Teacher</center></h2>
+				<div class="list-group">
+					<% @teachers.each do |i| %>
+						<%= link_to i.name, root_url(subdomain: i.slug), class: 'list-group-item list-group-item-action list-group-item-primary' %>
+					<% end %>
+				  </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

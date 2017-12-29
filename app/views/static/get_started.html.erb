@@ -28,8 +28,8 @@
 			errorElement: 'small',
 			errorClass: 'form-text text-muted error',
 			rules: {
-				"email": {email: true, required: true},
-				"passwd": {minlength: 6, required: true}
+				"user[email]": {email: true, required: true},
+				"user[password]": {minlength: 6, required: true}
 			}
 		});
 		$("#register_form").validate({
@@ -37,7 +37,7 @@
 			errorElement: 'small',
 			errorClass: 'form-text text-muted error',
 			rules: {
-				"user[name]": {required: true, maxlength: 25},
+				"user[name]": {required: true, maxlength: 50},
 				"user[dob]": {date: true, required: true},
 				"user[contact]": {pattern: /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/, required: true},
 				"user[email]": {email: true, required: true},
