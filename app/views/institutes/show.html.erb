@@ -25,6 +25,17 @@
       <div class="card-body">
         <%= sanitize @institute.about.html_safe %>
       </div>
+      <div class="card-footer">
+        Invite teachers through code: <input class= type="text-center" name="invitation" id="inviteCode" value="<%= @institute.invitation_code %>" readonly> <button onclick="copyText()" class="btn btn-dark">Copy Code</button>
+      </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  function copyText() {
+    var copied_text = document.getElementById("inviteCode");
+    copied_text.select();
+    document.execCommand("Copy");
+  }
+</script>

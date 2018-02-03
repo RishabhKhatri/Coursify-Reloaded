@@ -7,6 +7,7 @@ class CreateInstitutes < ActiveRecord::Migration[5.1]
       t.string :background
       t.string :contact, unique: true
       t.string :email, unique: true
+      t.string :invitation_code, unique: true
       t.text :about
       t.string :website
 

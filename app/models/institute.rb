@@ -2,6 +2,7 @@ class Institute < ApplicationRecord
 	resourcify
 	mount_uploader :profile, PictureUploader
 	mount_uploader :background, PictureUploader
+	before_create :generate_invitation
 
 	PHONE_REGEX = /\A(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d\z/
 	EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -22,5 +23,9 @@ class Institute < ApplicationRecord
 		if self.background.size > 5.megabytes
 			errors.add(:background, "should be less than 5MB")
 		end
+	end
+
+	def generate_invitation
+		self.invitation_code = self.slug + (0...8).map { (65 + rand(26)).chr }.join
 	end
 end

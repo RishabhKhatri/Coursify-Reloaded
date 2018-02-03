@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20171228210845) do
     t.string "background"
     t.string "contact"
     t.string "email"
+    t.string "invitation_code"
     t.text "about"
     t.string "website"
     t.datetime "created_at", null: false

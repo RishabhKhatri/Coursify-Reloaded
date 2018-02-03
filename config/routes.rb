@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get '/institutes', to: 'users#manage_institutes', as: 'manage_institutes', constraints: { subdomain: /(^$|^www$)/ }
 
+  post '/join', to: 'users#join_institute', as: 'join_institute'
+
   devise_for :users, skip: 'registrations', controllers: { confirmations: 'confirmations', omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
 
   devise_scope :user do

@@ -3,6 +3,14 @@
 		<h1><center>Manage Institute Profiles</center></h1>
 	</div>
 	<div class="card-body">
+		<center>
+			<h5>Have an invitation code? Join here: </h5>
+			<%= form_with(model: @institute, url: join_institute_url, id: :invitation_form) do |f| %>
+				<%= f.text_field :join_code, placeholder: "Code", name: "join_code" %>
+				<%= f.submit "Join", class: 'btn btn-dark' %>
+			<% end %>
+		</center>
+		<br>
 		<div class="row">
 			<div class="col-sm-4">
 				<h2><center>Super Admin</center></h2>
@@ -34,3 +42,16 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#invitation_form").validate({
+			debug: false,
+			errorElement: 'small',
+			errorClass: 'form-text text-muted error',
+			rules: {
+				"join_code": {minlength: 11, required: true}
+			}
+		});
+	});
+</script>
