@@ -26,7 +26,17 @@
         <%= sanitize @institute.about.html_safe %>
       </div>
       <div class="card-footer">
-        Invite teachers through code: <input class= type="text-center" name="invitation" id="inviteCode" value="<%= @institute.invitation_code %>" readonly> <button onclick="copyText()" class="btn btn-dark">Copy Code</button>
+        <div class="form-row">
+          <div class="col-auto">
+            Invitation Code <small>(Only for super admins)</small>:
+          </div>
+          <div class="col-auto">
+            <input id="copy_text" class="form-control form-control-sm" type="text" readonly value="<%= @institute.invitation_code %>"></input>
+          </div>
+          <div class="col-auto">
+            <button onclick="copyText()" class="btn btn-sm btn-dark">Copy Code</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -34,8 +44,8 @@
 
 <script type="text/javascript">
   function copyText() {
-    var copied_text = document.getElementById("inviteCode");
-    copied_text.select();
+    var text = document.getElementById("copy_text");
+    text.select();
     document.execCommand("Copy");
   }
 </script>

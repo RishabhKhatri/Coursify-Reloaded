@@ -4,37 +4,46 @@
 	</div>
 	<div class="card-body">
 		<center>
-			<h5>Have an invitation code? Join here: </h5>
-			<%= form_with(model: @institute, url: join_institute_url, id: :invitation_form) do |f| %>
-				<%= f.text_field :join_code, placeholder: "Code", name: "join_code" %>
-				<%= f.submit "Join", class: 'btn btn-dark' %>
+			<h5>Have an invitation code? </h5>
+			<%= form_with(model: @institute, url: join_institute_url, id: :invitation_form, class: "form-row justify-content-md-center") do |f| %>
+				<div class="col-auto">
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text" id="basic-addon1">Enter the code</span>
+					  </div>
+					  <%= f.text_field :join_code, class: 'form-control', name: "join_code" %>
+					  <div class="input-group-append">
+					  	<%= f.submit "Join", class: 'btn btn-outline-secondary' %>
+					  </div>
+					</div>
+				</div>
 			<% end %>
 		</center>
 		<br>
 		<div class="row">
 			<div class="col-sm-4">
 				<h2><center>Super Admin</center></h2>
-				<div class="list-group">
+				<div class="list-group list-group-flush">
 					<% @super_admins.each do |i| %>
-						<%= link_to i.name, root_url(subdomain: i.slug), class: 'list-group-item list-group-item-action list-group-item-primary' %>
+						<%= link_to i.name, root_url(subdomain: i.slug), class: 'list-group-item list-group-item-action list-group-item-dark' %>
 					<% end %>
 				  </a>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<h2><center>Admin</center></h2>
-				<div class="list-group">
+				<div class="list-group list-group-flush">
 					<% @admins.each do |i| %>
-						<%= link_to i.name, root_url(subdomain: i.slug), class: 'list-group-item list-group-item-action list-group-item-primary' %>
+						<%= link_to i.name, root_url(subdomain: i.slug), class: 'list-group-item list-group-item-action list-group-item-dark' %>
 					<% end %>
 				  </a>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<h2><center>Teacher</center></h2>
-				<div class="list-group">
+				<div class="list-group list-group-flush">
 					<% @teachers.each do |i| %>
-						<%= link_to i.name, root_url(subdomain: i.slug), class: 'list-group-item list-group-item-action list-group-item-primary' %>
+						<%= link_to i.name, root_url(subdomain: i.slug), class: 'list-group-item list-group-item-action list-group-item-dark' %>
 					<% end %>
 				  </a>
 				</div>
